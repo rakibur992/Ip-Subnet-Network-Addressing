@@ -12,7 +12,15 @@ def getModelOneAnswer(ip):
     first_address,last_address , numberOfAddress,_= getFirstAndLastAddressWithNumberOfAddress(ip)
     return jsonify({'first_address': first_address, 'last_address':last_address , 'numberOfAddress':numberOfAddress})
 
-
+def getModelTwoAnswerWithId(id):
+    x1 = int(id[0:3])
+    x2 = int(id[3:5])
+    x3 = int(id[0]+id[6])
+    x4 = int(id[5:7])
+    p = 20
+    subnetArray = [[120,1000],[400,2000]]
+    ip = f"{x1}.{x2}.{x3}.{x4}/{p}"
+    return getAnswer(ip,subnetArray)
 
 def getModelOneAnswerWithId(id):
     x1 = int(id[0:3])
@@ -22,6 +30,10 @@ def getModelOneAnswerWithId(id):
     p = int(id[0:2])
     subnetArray = [[240,120,2000],[4000,800,400]]
     ip = f"{x1}.{x2}.{x3}.{x4}/{p}"
+    return getAnswer(ip,subnetArray)
+    
+
+def getAnswer(ip,subnetArray):
     base_first_address,base_last_address , numberOfAddress,network = getFirstAndLastAddressWithNumberOfAddress(ip)
     response = dict()
     count = 0
