@@ -15,7 +15,7 @@ def getModelOneAnswer(ip):
 def getModelTwoAnswerWithId(id):
     x1 = int(id[0:3])
     x2 = int(id[3:5])
-    x3 = int(id[0]+id[6])
+    x3 = int(id[6]+id[0])
     x4 = int(id[5:7])
     p = 20
     subnetArray = [[120,1000],[400,2000]]
@@ -37,7 +37,7 @@ def getAnswer(ip,subnetArray):
     base_first_address,base_last_address , numberOfAddress,network = getFirstAndLastAddressWithNumberOfAddress(ip)
     response = dict()
     count = 0
-    response[count] = {'first_address': base_first_address, 'last_address':base_last_address , 'numberOfAddress':numberOfAddress}
+    response[count] = {'ip':ip,'first_address': base_first_address, 'last_address':base_last_address , 'numberOfAddress':numberOfAddress}
     existingSubnetArr = []
     for subnets in subnetArray:
         count += 1
